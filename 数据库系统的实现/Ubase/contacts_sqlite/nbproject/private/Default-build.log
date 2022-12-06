@@ -1,0 +1,4 @@
+g++ -g -Wall -DDEBUG   -c -o DB.o DB.cpp
+cc    -c -o sqlite3.o sqlite3.c
+g++ -g -Wall -DDEBUG   -c -o ContactApp.o ContactApp.cpp
+g++ -o ContactApp DB.o sqlite3.o ContactApp.o -ldl -lpthread

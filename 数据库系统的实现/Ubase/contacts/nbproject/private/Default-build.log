@@ -1,0 +1,17 @@
+g++ -g -Wall -DDEBUG   -c -o Person.o Person.cpp
+g++ -g -Wall -DDEBUG   -c -o ContactHashTable.o ContactHashTable.cpp
+ContactHashTable.cpp: In member function ‘void ContactHashTable::insert(Person*&)’:
+ContactHashTable.cpp:65:9: warning: unused variable ‘index’ [-Wunused-variable]
+   65 |  size_t index = hash(person->getName());
+      |         ^~~~~
+ContactHashTable.cpp: In member function ‘void ContactHashTable::find(std::string, Person*&)’:
+ContactHashTable.cpp:86:12: warning: unused variable ‘index’ [-Wunused-variable]
+   86 |     size_t index = hash(name);
+      |            ^~~~~
+ContactHashTable.cpp: In member function ‘void ContactHashTable::erase(std::string)’:
+ContactHashTable.cpp:101:18: warning: unused variable ‘prevNode’ [-Wunused-variable]
+  101 |     contactNode* prevNode = ht[index];
+      |                  ^~~~~~~~
+g++ -g -Wall -DDEBUG   -c -o Dictionary.o Dictionary.cpp
+g++ -g -Wall -DDEBUG   -c -o ContactApp.o ContactApp.cpp
+g++ -o ContactApp Person.o ContactHashTable.o Dictionary.o ContactApp.o 
