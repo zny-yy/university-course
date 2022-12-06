@@ -1,0 +1,24 @@
+g++ -g -Wall -DDEBUG -c Page.cpp
+g++ -g -Wall -DDEBUG -c Error.cpp
+g++ -g -Wall -DDEBUG -c OpenFileHashTable.cpp
+g++ -g -Wall -DDEBUG -c File.cpp
+g++ -g -Wall -DDEBUG -c DB.cpp
+g++ -g -Wall -DDEBUG -c BufferManager.cpp
+BufferManager.cpp: In member function ‘Status BufferHashTable::remove(const File*, int)’:
+BufferManager.cpp:106:21: warning: unused variable ‘prevBuc’ [-Wunused-variable]
+  106 |     BufferPageNode* prevBuc = ht[index]; //溢出链上当前节点的前一个节点
+      |                     ^~~~~~~
+BufferManager.cpp: At global scope:
+BufferManager.cpp:265:14: error: no declaration matches ‘const Status BufferManager::rejectFile(File*)’
+  265 | const Status BufferManager::rejectFile(File* file) {
+      |              ^~~~~~~~~~~~~
+BufferManager.cpp:265:14: note: no functions named ‘const Status BufferManager::rejectFile(File*)’
+In file included from BufferManager.cpp:8:
+BufferManager.h:102:7: note: ‘class BufferManager’ defined here
+  102 | class BufferManager {
+      |       ^~~~~~~~~~~~~
+BufferManager.cpp: In member function ‘const Status BufferManager::chooseFrame(int&)’:
+BufferManager.cpp:290:9: warning: unused variable ‘pinFrames’ [-Wunused-variable]
+  290 |     int pinFrames = 0; // 计算是否全部被钉住
+      |         ^~~~~~~~~
+make: *** [Makefile:40: BufferManager.o] Error 1

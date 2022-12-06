@@ -1,0 +1,54 @@
+called: g++
+	/home/u320223370/part1
+	g++
+	-g
+	-Wall
+	-DDEBUG
+	-c
+	Page.cpp
+
+called: g++
+	/home/u320223370/part1
+	g++
+	-g
+	-Wall
+	-DDEBUG
+	-c
+	Error.cpp
+
+called: g++
+	/home/u320223370/part1
+	g++
+	-g
+	-Wall
+	-DDEBUG
+	-c
+	OpenFileHashTable.cpp
+
+called: g++
+	/home/u320223370/part1
+	g++
+	-g
+	-Wall
+	-DDEBUG
+	-c
+	File.cpp
+
+called: g++
+	/home/u320223370/part1
+	g++
+	-g
+	-Wall
+	-DDEBUG
+	-c
+	DB.cpp
+
+called: g++
+	/home/u320223370/part1
+	g++
+	-g
+	-Wall
+	-DDEBUG
+	-c
+	BufferManager.cpp
+

@@ -1,0 +1,9 @@
+g++ -g -Wall -c Page.cpp
+g++ -g -Wall -c Error.cpp
+g++ -g -Wall -c OpenFileHashTable.cpp
+g++ -g -Wall -c File.cpp
+g++ -g -Wall -c DB.cpp
+g++ -g -Wall -c BufferManager.cpp
+g++ -g -Wall -c Heapfile.cpp
+g++ -g -Wall -c main.cpp
+g++ -o HeapfileApp Page.o Error.o OpenFileHashTable.o File.o DB.o BufferManager.o Heapfile.o main.o 

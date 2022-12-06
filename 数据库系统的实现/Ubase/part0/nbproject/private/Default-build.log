@@ -1,0 +1,7 @@
+g++ -g -Wall -DDEBUG -c Page.cpp
+g++ -g -Wall -DDEBUG -c Error.cpp
+g++ -g -Wall -DDEBUG -c OpenFileHashTable.cpp
+g++ -g -Wall -DDEBUG -c File.cpp
+g++ -g -Wall -DDEBUG -c DB.cpp
+g++ -g -Wall -DDEBUG -c main.cpp
+g++ -o DBApp Page.o Error.o OpenFileHashTable.o File.o DB.o main.o 
