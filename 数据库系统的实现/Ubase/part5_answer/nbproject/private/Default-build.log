@@ -1,0 +1,46 @@
+g++ -g -Wall   -c -o ubase.o ubase.cpp
+g++ -g -Wall   -c -o db.o db.cpp
+g++ -g -Wall   -c -o bufferManager.o bufferManager.cpp
+g++ -g -Wall   -c -o page.o page.cpp
+g++ -g -Wall   -c -o heapfile.o heapfile.cpp
+g++ -g -Wall   -c -o error.o error.cpp
+g++ -g -Wall   -c -o catalog.o catalog.cpp
+g++ -g -Wall   -c -o print.o print.cpp
+g++ -g -Wall   -c -o quit.o quit.cpp
+g++ -g -Wall   -c -o insert.o insert.cpp
+g++ -g -Wall   -c -o delete.o delete.cpp
+g++ -g -Wall   -c -o load.o load.cpp
+g++ -g -Wall   -c -o select.o select.cpp
+g++ -g -Wall   -c -o join.o join.cpp
+g++ -g -Wall   -c -o sort.o sort.cpp
+g++ -g -Wall   -c -o partition.o partition.cpp
+g++ -g -Wall   -c -o update.o update.cpp
+(cd parser; make)
+make[1]: Entering directory '/home/u320223370/part5_answer/parser'
+g++ -I.. -c y.tab.c -o parse.o
+rm -f scan.C
+flex -I -t scan.l > scan.C
+g++ -I.. -c scan.C
+rm -f scan.C
+g++ -I.. -g -Wall  -c nodes.C
+g++ -I.. -g -Wall  -c interp.C
+interp.C: In function ‘void interp(NODE*)’:
+interp.C:362:55: warning: passing argument 1 to restrict-qualified parameter aliases with argument 3 [-Wrestrict]
+  362 |                             sprintf(createAttrInfo[i].attrName, "%s_%d",
+      |                                     ~~~~~~~~~~~~~~~~~~^~~~~~~~
+  363 |                                 createAttrInfo[i].attrName, counter++);
+      |                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+interp.C:74:9: warning: variable ‘len’ set but not used [-Wunused-but-set-variable]
+   74 |     int len; // attribute length
+      |         ^~~
+interp.C:79:9: warning: variable ‘nbuckets’ set but not used [-Wunused-but-set-variable]
+   79 |     int nbuckets; // temp number of buckets
+      |         ^~~~~~~~
+g++  -c yywrap.c
+ld -o ../parser.o -r scan.o parse.o nodes.o interp.o yywrap.o
+make[1]: Leaving directory '/home/u320223370/part5_answer/parser'
+g++ -o ubase ubase.o db.o bufferManager.o page.o heapfile.o error.o catalog.o print.o quit.o insert.o delete.o load.o select.o join.o sort.o partition.o update.o parser.o  -lm
+g++ -g -Wall   -c -o dbcreate.o dbcreate.cpp
+g++ -o dbcreate dbcreate.o db.o bufferManager.o page.o heapfile.o catalog.o error.o print.o  -lm
+g++ -g -Wall   -c -o dbdestroy.o dbdestroy.cpp
+g++ -o dbdestroy dbdestroy.o

@@ -1,0 +1,21 @@
+/*
+ * qu.5、测试QU_Select函数，使用别名
+ */
+
+/* 创建student表 */
+create table student(id char(9),name char(16),gender char(4),age int,grade real,class_id char(7));
+
+/* 导入数据 */
+load table student from ("../data/student.data");
+
+/* 简单查询 */
+select * from student s;
+
+/* 单表查询字段无需使用表名来区分 */
+select id, name, grade from student where grade > 88.50;
+
+/* 单表查询字段可以使用表名来区分 */
+select student.id, student.name, student.grade from student where student.grade > 88.50;
+
+/* 表名可以使用别名 */
+select s.id, s.name, s.grade from student s where s.grade > 88.50;

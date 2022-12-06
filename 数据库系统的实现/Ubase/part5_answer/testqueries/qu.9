@@ -1,0 +1,23 @@
+/*
+ * qu.9、测试QU_Update函数
+ */
+
+
+/* 创建student表 */
+create table student(id char(9),name char(16),gender char(4),age int,grade real,class_id char(7));
+
+/* 导入数据 */
+load table student from ("../data/student.data");
+
+
+update student set age = 30 where gender = "男";
+select id,name,gender,age,grade,class_id from student;
+
+update student set age = 28 where grade > 90;
+select id,name,gender,age,grade,class_id from student;
+
+update student set age=22 where age = 30;
+select id,name,gender,age,grade,class_id from student;
+
+update student set grade = 90 where grade < 85;
+select id,name,gender,age,grade,class_id from student;

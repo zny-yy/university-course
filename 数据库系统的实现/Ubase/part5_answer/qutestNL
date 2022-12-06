@@ -1,0 +1,90 @@
+#! /bin/csh -f
+
+# qutestNL: 查询层测试脚本（嵌套循环连接）
+
+#
+# DATADIR:  数据文件目录 
+#
+
+set DATADIR = ./data
+
+
+#
+# TESTSDIR:  测试用查询语句脚本目录
+# are.  
+#
+
+set TESTSDIR = ./testqueries
+
+
+#
+# 3个命令的名称
+#
+
+set DBCREATE  = ./dbcreate
+set DBDESTROY = ./dbdestroy
+set UBASE   = ./ubase
+
+
+#
+# 检查测试用查询语句脚本目录及脚本文件是否存在
+#
+
+if ( ! -d $TESTSDIR ) then
+	echo The TESTSDIR variable is currently set to \
+		$TESTSDIR, which is not a valid directory. \
+		Please read the instructions at the top of the \
+		$0 script, set 'TESTDIR' correctly, and rerun the \
+		script. | fmt
+	exit 1
+endif
+
+if ( `ls $TESTSDIR/qu.[0-9]* | wc -l` == 0 ) then
+	echo I can not find the QU test files in $TESTSDIR. \
+		Please read the instructions at the beginning \
+		of the $0 script, set TESTDIR correctly, and rerun \
+		the script | fmt
+	exit 1
+endif
+
+
+#
+# 测试用数据库名称
+#
+
+set TESTDB = testdb
+
+
+#
+# 运行所期望的测试
+#
+
+
+#
+# 如果没有参数，则运行所有测试
+#
+
+if ( $#argv == 0 ) then
+	foreach queryfile ( `ls $TESTSDIR/qu.*` )
+		echo 运行测试 '#' $queryfile:e '****************'
+		$DBCREATE  $TESTDB
+		$UBASE  $TESTDB NL < $queryfile
+		echo "y" | $DBDESTROY $TESTDB
+	end
+
+#
+# 否则，运行指定的测试
+#
+
+else
+	foreach testnum ( $* )
+		if ( -r $TESTSDIR/qu.$testnum ) then
+			echo 运行测试 '#' $testnum '****************'
+			$DBCREATE  $TESTDB
+                        $UBASE  $TESTDB NL < $TESTSDIR/qu.$testnum
+			echo "y" | $DBDESTROY $TESTDB
+		else
+			echo 找不到编号为$testnum的测试.
+		endif
+	end
+endif

@@ -1,0 +1,42 @@
+g++ -g -Wall -c ubase.cpp
+g++ -g -Wall -c db.cpp
+g++ -g -Wall -c bufferManager.cpp
+g++ -g -Wall -c page.cpp
+g++ -g -Wall -c heapfile.cpp
+g++ -g -Wall -c error.cpp
+g++ -g -Wall -c catalog.cpp
+g++ -g -Wall -c print.cpp
+g++ -g -Wall -c quit.cpp
+g++ -g -Wall -c load.cpp
+g++ -g -Wall -c query.cpp
+g++ -g -Wall -c sort.cpp
+g++ -g -Wall -c partition.cpp
+(cd parser; make)
+make[1]: Entering directory '/home/2022_2023/ubase_answer/part4_answer/parser'
+g++ -I.. -c y.tab.c -o parse.o
+rm -f scan.C
+flex -I -t scan.l > scan.C
+g++ -I.. -c scan.C
+rm -f scan.C
+g++ -I.. -g -Wall  -c nodes.C
+g++ -I.. -g -Wall  -c interp.C
+interp.C: In function ‘void interp(NODE*)’:
+interp.C:362:55: warning: passing argument 1 to restrict-qualified parameter aliases with argument 3 [-Wrestrict]
+  362 |                             sprintf(createAttrInfo[i].attrName, "%s_%d",
+      |                                     ~~~~~~~~~~~~~~~~~~^~~~~~~~
+  363 |                                 createAttrInfo[i].attrName, counter++);
+      |                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+interp.C:74:9: warning: variable ‘len’ set but not used [-Wunused-but-set-variable]
+   74 |     int len; // attribute length
+      |         ^~~
+interp.C:79:9: warning: variable ‘nbuckets’ set but not used [-Wunused-but-set-variable]
+   79 |     int nbuckets; // temp number of buckets
+      |         ^~~~~~~~
+g++  -c yywrap.c
+ld -o ../parser.o -r scan.o parse.o nodes.o interp.o yywrap.o
+make[1]: Leaving directory '/home/2022_2023/ubase_answer/part4_answer/parser'
+g++ -o ubase ubase.o db.o bufferManager.o page.o heapfile.o error.o catalog.o print.o quit.o load.o query.o sort.o partition.o parser.o  -lm
+g++ -g -Wall -c dbcreate.cpp
+g++ -o dbcreate dbcreate.o db.o bufferManager.o page.o heapfile.o catalog.o error.o print.o  -lm
+g++ -g -Wall -c dbdestroy.cpp
+g++ -o dbdestroy dbdestroy.o

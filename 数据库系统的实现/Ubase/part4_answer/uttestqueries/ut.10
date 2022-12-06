@@ -1,0 +1,27 @@
+/*
+ * ut.10: 测试中文支持
+ */
+
+/* 创建2个表 */
+create table class(classID int, className char(20));
+create table student(studentID char(9), name char(20), phone char(11), classID int);
+
+/* 显示表及其结构 */
+help;
+help table class; 
+help table student;
+
+/* 从../data/class.data导入记录 */
+load table class from ("../data/class.data");
+
+/* 显示输出class表的内容 */
+print table class;
+
+
+/* 从../data/student.data导入记录 */
+load table student from ("../data/student.data");
+
+/* 显示输出student表的内容 */
+print table student;
+
+quit;

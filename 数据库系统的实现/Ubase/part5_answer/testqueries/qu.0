@@ -1,0 +1,65 @@
+/*
+ * qu.0、测试QU_Insert函数
+ */
+
+/* 创建学生表 */
+create table student(id char(9),name char(16),gender char(4),age int,grade real,class_id char(7));
+
+/* 显示数据字典内容，验证学生表创建是否成功 */
+help;
+
+help table student;
+
+/* 显示文件列表，验证学生表创建是否成功 */
+!ls
+
+/* 显示学生表的内容，应当没有任何记录 */
+print table student;
+
+/* 用SQL语句向学生表插入记录 */
+insert into student(id,name,gender,age,grade,class_id) values("034632214","贾晓丽","男",24,80.5,"0346321");
+insert into student(id,name,gender,age,grade,class_id) values("034632219","黄  源","男",24,90.0,"0346322");
+insert into student(id,name,gender,age,grade,class_id) values("034632251","田  雪","女",24,89.5,"0346324");
+insert into student(id,name,gender,age,grade,class_id) values("034632256","李兴成","男",24,88.5,"0346324");
+insert into student(id,name,gender,age,grade,class_id) values("034632260","王文婷","女",24,87.5,"0346324");
+insert into student(id,name,gender,age,grade,class_id) values("034632261","田秀钰","女",24,86.5,"0346324");
+insert into student(id,name,gender,age,grade,class_id) values("034632271","唐  征","男",24,85.5,"0346324");
+insert into student(id,name,gender,age,grade,class_id) values("034632277","唐建国","男",24,84.5,"0346324");
+insert into student(id,name,gender,age,grade,class_id) values("034632278","王  雷","男",24,83.5,"0346324");
+insert into student(id,name,gender,age,grade,class_id) values("034632279","高广智","男",24,82.5,"0346324");
+insert into student(id,name,gender,age,grade,class_id) values("034632280","袁  杰","男",24,81.5,"0346324");
+insert into student(id,name,gender,age,grade,class_id) values("y20040001","杨  挺","男",24,95.5,"yjs2004");
+insert into student(id,name,gender,age,grade,class_id) values("y20040002","司红敏","女",24,94.5,"yjs2004");
+insert into student(id,name,gender,age,grade,class_id) values("y20040003","冉慧敏","女",24,93.05,"yjs2004");
+insert into student(id,name,gender,age,grade,class_id) values("y20050001","冯向萍","女",24,92.15,"yjs2005");
+insert into student(id,name,gender,age,grade,class_id) values("y20050002","李  萍","女",24,91.12,"yjs2005");
+insert into student(id,name,gender,age,grade,class_id) values("y20050003","朱  平","男",24,90.88,"yjs2005");
+insert into student(name,gender,age) values("张太红","男",42);
+
+/* 显示学生表的内容，应当输出17条记录 */
+print table student;
+
+
+/* 创建班级表 */
+create table class(class_id char(7),name char(20));
+
+/* 显示数据字典内容，验证学生表创建是否成功 */
+help;
+
+help table class;
+
+/* 显示文件列表，验证学生表创建是否成功 */
+!ls
+
+/* 显示班级表的内容，应当没有任何记录 */
+print table class;
+
+/* 用SQL语句向班级表插入记录 */
+insert into class(class_id,name) values("0346321","计科031班");
+insert into class(class_id,name) values("0346322","计科032班");
+insert into class(class_id,name) values("0346324","计科034班");
+insert into class(class_id,name) values("yjs2004","2004级研究生");
+insert into class(class_id,name) values("yjs2005","2005级研究生");
+
+/* 显示班级表的内容，应当输出5条记录 */
+print table class;

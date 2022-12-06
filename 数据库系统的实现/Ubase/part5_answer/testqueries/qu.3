@@ -1,0 +1,23 @@
+/*
+ * qu.3、测试QU_Select函数，单表带筛选条件(整数型字段设置条件)
+ */
+
+/* 创建student表 */
+create table student(id char(9),name char(16),gender char(4),age int,grade real,class_id char(7));
+
+/* 导入数据 */
+load table student from ("../data/student.data");
+
+/* 简单查询 */
+select * from student;
+
+/* 整数字段设置查询条件 */
+select * from student where age = 21;
+
+select * from student where age > 21;
+select * from student where age >= 21;
+
+select * from student where age < 21;
+select * from student where age <= 21;
+
+select * from student where age != 21;

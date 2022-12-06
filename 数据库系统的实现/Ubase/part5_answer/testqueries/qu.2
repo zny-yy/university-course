@@ -1,0 +1,28 @@
+/*
+ * qu.2、测试QU_Select函数，单表带筛选条件(字符型字段设置条件)
+ */
+
+/* 创建student表 */
+create table student(id char(9),name char(16),gender char(4),age int,grade real,class_id char(7));
+
+/* 导入数据 */
+load table student from ("../data/student.data");
+
+/* 简单选择查询 */
+select * from student where gender = "男";
+
+select * from student where gender != "男";
+/* 创建class表 */
+create table class(class_id char(7),name char(20));
+
+/* 导入数据 */
+load table class from ("../data/class.data");
+
+/* 简单单选查询 */
+select * from class where name = "计科032班";
+
+/* 调整字段的顺序 */
+select name,class_id from class where name = "计科032班";
+
+/* 投影操作，即输出部分字段 */
+select id, name, gender from student where gender = "女";

@@ -1,0 +1,31 @@
+/*
+ * qu.8、测试QU_Delete函数
+ */
+
+/* 创建student表 */
+create table student(id char(9),name char(16),gender char(4),age int,grade real,class_id char(7));
+
+/* 导入数据 */
+load table student from ("../data/student.data");
+
+
+/* 创建class表 */
+create table class(class_id char(7),name char(20));
+
+/* 导入数据 */
+load table class from ("../data/class.data");
+
+delete from student where gender="男";
+select id,name,gender,age,grade,class_id from student;
+
+delete from student where grade=90;
+select id,name,gender,age,grade,class_id from student;
+
+delete from student where age > 28;
+select id,name,gender,age,grade,class_id from student;
+
+delete from student where grade>87;
+select id,name,gender,age,grade,class_id from student;
+
+delete from class;
+print table class;

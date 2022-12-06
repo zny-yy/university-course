@@ -1,0 +1,18 @@
+/*
+ * ut.7: 测试容错能力
+ */
+create table soaps(s int, d char(20));
+create table soaps1(s int,d char(20));
+create table soaps2(s int,d char(20));
+create table soaps3(s int,d char(20));
+create table soaps4(s int,d char(20));
+
+/* 你能删除字典表吗? */
+/* 下列2条语句应当失败 */
+destroy table relcat;
+destroy table attrcat;
+
+
+help;
+
+quit;

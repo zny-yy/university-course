@@ -1,0 +1,22 @@
+/*
+ * qu.6、测试QU_Join函数，连接查询，使用别名
+ */
+
+/* 创建student表 */
+create table student(id char(9),name char(16),gender char(4),age int,grade real,class_id char(7));
+
+/* 导入数据 */
+load table student from ("../data/student.data");
+
+
+/* 创建class表 */
+create table class(class_id char(7),name char(20));
+
+/* 导入数据 */
+load table class from ("../data/class.data");
+
+
+/* 连接查询 */
+select s.id, s.name, s.gender, s.age, s.grade, c.name
+from student s, class c
+where s.class_id = c.class_id;  /* 连接条件 */

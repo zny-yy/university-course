@@ -1,0 +1,22 @@
+/*
+ * ut.3: 测试创建表（create）和带参数的help命令
+ */
+
+/* 创建一个简单的表 */
+create table easy (myattr char(24));
+
+/* 列示目录观察是否有文件被创建 */
+!ls
+
+/* 观察UBASE能否生成数据字典记录并正常回显 */
+help table easy;
+
+/* 创建一个较大的表*/
+create table easier (one char(24), two int, three real, four char(100));
+
+/* 同上 */
+!ls
+help table easier;
+
+help;
+quit;

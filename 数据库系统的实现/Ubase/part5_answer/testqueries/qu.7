@@ -1,0 +1,29 @@
+/*
+ * qu.7、测试QU_Join函数及select into
+ */
+
+/* 创建student表 */
+create table student(id char(9),name char(16),gender char(4),age int,grade real,class_id char(7));
+
+/* 导入数据 */
+load table student from ("../data/student.data");
+
+
+/* 创建class表 */
+create table class(class_id char(7),name char(20));
+
+/* 导入数据 */
+load table class from ("../data/class.data");
+
+
+/* 连接查询并将结果保存到tempTable表中 */
+select s.id, s.name, s.gender, s.age, s.grade, c.name
+into tempTable
+from student s, class c
+where s.class_id = c.class_id;  /* 连接条件 */
+
+
+select * from tempTable where name_0 = "计科034班";
+
+destroy table tempTable;
+
